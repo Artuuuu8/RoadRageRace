@@ -43,6 +43,7 @@ public class PlayerCarController : MonoBehaviour
         // Apply acceleration only if below max speed
         if (rb.velocity.magnitude < maxSpeed || moveInput < 0)
         {
+            AudioManager.Instance.StartCarAccelerationSound(); // Start engine sound
             rb.AddForce(transform.forward * moveInput * acceleration, ForceMode.Acceleration);
         }
 
@@ -65,6 +66,7 @@ public class PlayerCarController : MonoBehaviour
         // If the car hits another player, slow it down
         if (collision.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlayCarCrashSound(); // Play crash sound
             rb.velocity *= 0.7f; // Reduce speed by 30%
             rb.angularVelocity = Vector3.zero; // Stop unnecessary spinning
         }
@@ -72,6 +74,7 @@ public class PlayerCarController : MonoBehaviour
         // If the car hits the guardrail, slow it down
         if (collision.gameObject.CompareTag("Guardrail"))
         {
+            AudioManager.Instance.PlayCarCrashSound(); // Play crash sound
             rb.velocity *= 0.5f; // Reduce speed by 50%
             rb.angularVelocity = Vector3.zero; // Stop unwanted spin
         }

@@ -29,6 +29,8 @@ public class UIManager : MonoBehaviour
     // Restart the scene/game
     void RestartGame()
     {
+        AudioManager.Instance.StopFinishSound();
+        AudioManager.Instance.PlayRestartSound();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

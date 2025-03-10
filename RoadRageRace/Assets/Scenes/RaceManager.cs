@@ -16,12 +16,16 @@ public class RaceManager : MonoBehaviour
     IEnumerator StartCountdown()
     {
         countdownText.text = "3";
+        AudioManager.Instance.PlayCountdownSound();
         yield return new WaitForSeconds(1);
         countdownText.text = "2";
+        AudioManager.Instance.PlayCountdownSound();
         yield return new WaitForSeconds(1);
         countdownText.text = "1";
+        AudioManager.Instance.PlayCountdownSound();
         yield return new WaitForSeconds(1);
         countdownText.text = "GO!";
+        AudioManager.Instance.PlayStartSound();
         yield return new WaitForSeconds(1);
         countdownText.text = "";
 
