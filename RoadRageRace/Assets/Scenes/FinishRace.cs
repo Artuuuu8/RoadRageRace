@@ -1,20 +1,30 @@
 using UnityEngine;
 
-public class FinishRace : MonoBehaviour
+public class FinishLine : MonoBehaviour
 {
-    private bool raceStarted = false;
+    private bool raceFinished = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("FinishLine") && raceStarted)
+        Debug.Log("FinishLine triggered by: " + other.gameObject.name);
+        if (!raceFinished && other.CompareTag("Player"))
         {
-            Debug.Log(gameObject.name + " WINS!");
-            // Here you can stop the game, show a UI message, or restart the race
-        }
-    }
+            raceFinished = true; // Prevent multiple triggers
+            Debug.Log("FinishLine: Player detected. Finishing race!");
 
-    public void StartRace()
-    {
-        raceStarted = true;
+            // Optionally, you could stop player movement here
+
+            // Find the UIManager and display the finish UI
+            UIManager uiManager = FindObjectOfType<UIManager>();
+            if (uiManager != null)
+            {
+                uiManager.ShowFinish("1st Place!");
+                Debug.Log("FinishLine: UIManager found, finish UI displayed.");
+            }
+            else
+            {
+                Debug.LogWarning("FinishLine: UIManager not found in the scene.");
+            }
+        }
     }
 }

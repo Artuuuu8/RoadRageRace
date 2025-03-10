@@ -358,9 +358,11 @@
 -analyzer:"Library/PackageCache/com.unity.collab-proxy@2.7.1/Lib/Editor/Unity.Plastic.Antlr3.Runtime.dll"
 -analyzer:"Library/PackageCache/com.unity.collab-proxy@2.7.1/Lib/Editor/Unity.Plastic.Newtonsoft.Json.dll"
 -analyzer:"Library/PackageCache/com.unity.collab-proxy@2.7.1/Lib/Editor/unityplastic.dll"
+"Assets/Scenes/CameraFollow.cs"
 "Assets/Scenes/FinishRace.cs"
 "Assets/Scenes/PlayerMovement.cs"
 "Assets/Scenes/RaceManager.cs"
+"Assets/Scenes/UIManager.cs"
 -langversion:9.0
 /deterministic
 /optimize+
