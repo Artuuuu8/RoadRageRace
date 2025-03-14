@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // Singleton instance for easy access
     public static AudioManager Instance;
 
-    // AudioClips for the different sounds
+    // AudioClips for different sounds
     public AudioClip countdownSound;
     public AudioClip carCrashSound;
     public AudioClip carAccelerationSound;
@@ -13,7 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip finishSound;
     public AudioClip restartSound;
 
-    // The AudioSource to play sounds
+    // AudioSource to play sounds
     private AudioSource audioSource;
 
     void Awake()
@@ -31,7 +30,7 @@ public class AudioManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Play the countdown sound once (use PlayOneShot for short sound effects)
+    // Play the countdown sound once 
     public void PlayCountdownSound()
     {
         audioSource.PlayOneShot(countdownSound);
@@ -43,7 +42,7 @@ public class AudioManager : MonoBehaviour
         audioSource.PlayOneShot(carCrashSound);
     }
 
-    // For car acceleration, you might want to loop the sound:
+    // For car acceleration
     public void StartCarAccelerationSound()
     {
         if (audioSource.clip != carAccelerationSound)

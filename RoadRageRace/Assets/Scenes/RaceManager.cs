@@ -1,20 +1,44 @@
 using UnityEngine;
 using System.Collections;
-using TMPro;  // Import TextMeshPro namespace
+using Unity.Netcode;
+using TMPro;
 
-public class RaceManager : MonoBehaviour
+public class RaceManager : NetworkBehaviour
 {
     public PlayerCarController player1;
     public PlayerCarController player2;
-    public TMP_Text countdownText; // Reference to your TextMeshPro text component
+    public TMP_Text countdownText;
 
-    void Start()
+
+    public override void OnNetworkSpawn()
     {
-        StartCoroutine(StartCountdown());
+            StartCoroutine(StartCountdown());
+        
     }
 
     IEnumerator StartCountdown()
     {
+        countdownText.text = "10";
+        AudioManager.Instance.PlayCountdownSound();
+        yield return new WaitForSeconds(1);
+        countdownText.text = "9";
+        AudioManager.Instance.PlayCountdownSound();
+        yield return new WaitForSeconds(1);
+        countdownText.text = "8";
+        AudioManager.Instance.PlayCountdownSound();
+        yield return new WaitForSeconds(1);
+        countdownText.text = "7";
+        AudioManager.Instance.PlayCountdownSound();
+        yield return new WaitForSeconds(1);
+        countdownText.text = "6";
+        AudioManager.Instance.PlayCountdownSound();
+        yield return new WaitForSeconds(1);
+        countdownText.text = "5";
+        AudioManager.Instance.PlayCountdownSound();
+        yield return new WaitForSeconds(1);
+        countdownText.text = "4";
+        AudioManager.Instance.PlayCountdownSound();
+        yield return new WaitForSeconds(1);
         countdownText.text = "3";
         AudioManager.Instance.PlayCountdownSound();
         yield return new WaitForSeconds(1);
@@ -29,7 +53,6 @@ public class RaceManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         countdownText.text = "";
 
-        player1.StartRace();
-        player2.StartRace();
     }
 }
+

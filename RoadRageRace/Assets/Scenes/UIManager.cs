@@ -14,11 +14,10 @@ public class UIManager : MonoBehaviour
         resultText.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
 
-        // Add a listener to the restart button
         restartButton.onClick.AddListener(RestartGame);
     }
 
-    // Call this method when the race is finished
+
     public void ShowFinish(string message)
     {
         resultText.text = message;
